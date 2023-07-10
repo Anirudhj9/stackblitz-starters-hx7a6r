@@ -1,0 +1,309 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/>
+<div class="container;">
+  <div class="row;">
+    <div class="col-md-12 d-flex justify-content-center">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="signUp()"
+        class="my-form col-md-5"
+      >
+        <div class="col-md-12">
+          <div class="form-group d-flex justify-content-center">
+            <h4>Sign Up</h4>
+          </div>
+          <hr />
+
+          <div class="form-group">
+            <div class="col-md-6">
+              <label for="firstName">First Name:</label>
+              <input
+                type="text"
+                id="firstName"
+                formControlName="firstName"
+                class="form-control"
+                placeholder="First name"
+              />
+              <div
+                *ngIf="
+                  (registerForm.get('firstName')?.invalid &&
+                    registerForm.get('firstName')?.touched) ||
+                  registerForm.get('firstName')?.dirty
+                "
+              >
+                <div
+                  *ngIf="registerForm.get('firstName')?.errors?.required"
+                  class="text-danger"
+                >
+                  Please enter first name
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName">Last Name:</label>
+              <input
+                type="text"
+                id="lastName"
+                formControlName="lastName"
+                class="form-control"
+                placeholder="Last name"
+              />
+              <div
+                *ngIf="
+                  (registerForm.get('lastName')?.invalid &&
+                    registerForm.get('lastName')?.touched) ||
+                  registerForm.get('lastName')?.dirty
+                "
+              >
+                <div
+                  *ngIf="registerForm.get('lastName')?.errors?.required"
+                  class="text-danger"
+                >
+                  Please enter last name
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-12">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="form-control"
+                placeholder="Email address"
+              />
+              <div
+                *ngIf="
+                  (registerForm.get('email')?.invalid &&
+                    registerForm.get('email')?.touched) ||
+                  registerForm.get('email')?.dirty
+                "
+              >
+                <label
+                  *ngIf="registerForm.get('email')?.hasError('required')"
+                  class="text-danger"
+                  >Email address is required</label
+                >
+                <label
+                  *ngIf="registerForm.get('email')?.hasError('pattern')"
+                  class="text-danger"
+                  >Please provide a valid email address</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-6">
+              <label for="dateOfBirth">Date of Birth:</label>
+              <input
+                type="date"
+                id="dateOfBirth"
+                formControlName="dateOfBirth"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  (registerForm.get('dateOfBirth')?.invalid &&
+                    registerForm.get('dateOfBirth')?.touched) ||
+                  registerForm.get('dateOfBirth')?.dirty
+                "
+              >
+                <div
+                  *ngIf="registerForm.get('dateOfBirth')?.errors?.required"
+                  class="text-danger"
+                >
+                  Please select a date
+                </div>
+                <div
+                  *ngIf="
+                    registerForm.get('dateOfBirth')?.errors?.invalidDateOfBirth
+                  "
+                  class="text-danger"
+                >
+                  Please select valid date
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="phoneNumber">Phone Number:</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                formControlName="phoneNumber"
+                class="form-control"
+                placeholder="Phone number"
+                maxlength="10"
+              />
+              <div
+                *ngIf="
+                  (registerForm.get('phoneNumber')?.invalid &&
+                    registerForm.get('phoneNumber')?.touched) ||
+                  registerForm.get('phoneNumber')?.dirty ||
+                  registerForm.get('phoneNumber')?.errors?.pattern
+                "
+              >
+                <div
+                  *ngIf="registerForm.get('phoneNumber')?.errors?.required"
+                  class="text-danger"
+                >
+                  Phone number is required
+                </div>
+                <div
+                  *ngIf="registerForm.get('phoneNumber')?.errors?.pattern"
+                  class="text-danger"
+                >
+                  Invalid phone number
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-12">
+              <label for="userName">Username:</label>
+              <div class="col-md-12" style="display: flex;padding: 0%;">
+                <input
+                  type="text"
+                  id="userName"
+                  formControlName="userName"
+                  class="form-control"
+                  style="margin-right: 8px"
+                  placeholder="User name"
+                  (input)="checkUsernameExists()"
+                  [ngClass]="{
+                    'is-invalid':
+                      registerForm.get('userName')?.errors?.userExists,
+                    'valid-input': registerForm.get('userName')?.valid
+                  }"
+                />
+                <button
+                  style="width: 47%; font-size: 12px"
+                  type="button"
+                  class="btn btn-primary UserName-Button"
+                  (click)="autoGenerateUSerName()"
+                  [disabled]="registerForm.get('firstName')?.value == ''"
+                >
+                  Auto Generate
+                </button>
+                <div class="username-input">
+                  <div
+                    class="username-icon"
+                    title="You can click on Auto generate button to generate user name.
+The user name must be of minimum 3 characters, must contain atleast 1 letter, can have number and '@' char. It must begin with letter"
+                  >
+                    <i class="fas fa-info-circle"> </i>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="
+                  (registerForm.get('userName')?.invalid &&
+                    registerForm.get('userName')?.touched) ||
+                  registerForm.get('userName')?.dirty
+                "
+              >
+                <label
+                  *ngIf="registerForm.get('userName')?.hasError('required')"
+                  class="text-danger"
+                  >User name is required</label
+                >
+                <label
+                  *ngIf="registerForm.get('userName')?.hasError('pattern')"
+                  class="text-danger"
+                  >Please provide a valid user name</label
+                >
+                <label
+                  *ngIf="registerForm.get('userName')?.hasError('minlength')"
+                  class="text-danger"
+                >
+                  User name should be atleast 3 characters
+                </label>
+                <label
+                  *ngIf="registerForm.get('userName')?.errors?.userExists"
+                  class="text-danger"
+                >
+                  User name already exists
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-6">
+              <label for="password">Password:</label>
+              <div class="col-md-12" style="display: flex; padding: 0%">
+                <input
+                  type="password"
+                  id="password"
+                  formControlName="password"
+                  class="form-control"
+                  placeholder="Password"
+                />
+                <div class="password1-input">
+                  <div
+                    class="password1-icon"
+                    title="Password must be atleast 8 characters and maximum of 15 character. It must have atleast: 
+ 1 special character,
+ 1 upper case letter,
+ 1 lower case letter,
+ 1 numeric letter and no spaces"
+                  >
+                    <i class="fas fa-info-circle"> </i>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="registerForm.get('password')?.errors?.pat; tern"
+                class="text-danger"
+              >
+                Please enter valid password
+              </div>
+              <div
+                *ngIf="registerForm.get('password')?.errors?.minlength"
+                class="text-danger"
+              >
+                Passwords should be atleast 8 char length
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="confirmPassword">Confirm Password:</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                class="form-control"
+                placeholder="Confirm password"
+                [ngClass]="{
+                  'invalid-input':
+                    registerForm.get('confirmPassword')?.errors
+                      ?.passwordMismatch,
+                  'valid-input': registerForm.get('confirmPassword')?.valid
+                }"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('confirmPassword')?.errors?.passwordMismatch
+                "
+                class="text-danger"
+              >
+                Passwords do not match
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group register-button-div">
+            <button type="submit" class="btn btn-primary register-button">
+              Register
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

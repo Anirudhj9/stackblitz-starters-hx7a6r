@@ -1,0 +1,30 @@
+.my-form {
+  background-color: white;
+  padding: 20px 20px 20px 20px;
+  margin-top: 4%;
+  height: 50%;
+  width: 50%;
+  font-size: 15px;
+}
+.form-group {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+input,
+input::placeholder {
+  font: 14px sans-serif;
+}
+.invalid-input {
+  border: 1px solid red;
+}
+.valid-input {
+  border: 2px solid rgb(51, 158, 51);
+}
+.login-button-div {
+  padding-top: 3%;
+}
+
+.login-button {
+  background-color: #188b18;
+}
