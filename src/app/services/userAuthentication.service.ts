@@ -37,6 +37,15 @@ export class UserAuthenticationService {
       dateOfBirth: '',
       phoneNumber: '8080880880',
     },
+    {
+      emailID: 'user4@example.com',
+      password: '@Password4',
+      userName: 'user@4',
+      firstName: 'user4',
+      lastName: '',
+      dateOfBirth: '',
+      phoneNumber: '8080880880',
+    },
   ];
 
   ValidateUserCredentials(email: string, password: string): Boolean {
