@@ -1,1 +1,25 @@
-<p>This home page is working</p>
+<div class="col-md-12">
+  <p>This home page is working</p>
+  <mat-grid-list cols="1" rowHeight="200px">
+    <div mat-grid-title>
+      <mat-card>
+        <mat-card-content>
+          <div class="grid-container">
+            <div class="grid-item">First Name</div>
+            <div class="grid-item">Last Name</div>
+            <div class="grid-item">Email ID</div>
+            <div class="grid-item">Date Of Birth</div>
+            <div class="grid-item">Phone Number</div>
+          </div>
+          <div *ngFor="let item of users" class="grid-item">
+            {{ item.firstName }}
+            {{ item.lasstName }}
+            {{ item.emailID }}
+            {{ item.phoneNumber }}
+            {{ item.dateOfBirth }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-grid-list>
+</div>
