@@ -96,7 +96,7 @@ export class UserAuthenticationService {
 
   checkUserNameExists(username: string) {
     for (var i = 0; i < this.UserDataList.length; i++) {
-      if (this.UserDataList[i].userName === username) {
+      if (this.UserDataList[i].userName == username) {
         return true;
       }
     }

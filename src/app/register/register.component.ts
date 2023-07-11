@@ -58,6 +58,8 @@ export class AppRegisterPage implements OnInit {
     }
   }
   autoGenerateUSerName() {
+    //call the function of repeat code.
+    //first check username then @1/@2
     const fname = this.registerForm.get(['firstName'])?.value;
     const lname = this.registerForm.get(['lastName'])?.value;
     if (lname != '') {
@@ -105,7 +107,6 @@ export class AppRegisterPage implements OnInit {
       }
     }
   }
-
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
       {
@@ -135,7 +136,7 @@ export class AppRegisterPage implements OnInit {
           '',
           [
             Validators.required,
-            Validators.maxLength(10),
+            //Validators.maxLength(10),
             Validators.pattern(/^[0-9]{10}$/),
           ],
         ],
@@ -144,7 +145,7 @@ export class AppRegisterPage implements OnInit {
           [
             Validators.required,
             Validators.minLength(8),
-            Validators.maxLength(20),
+            //Validators.maxLength(20),
             Validators.pattern(
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
             ),
@@ -155,7 +156,7 @@ export class AppRegisterPage implements OnInit {
           [
             Validators.required,
             Validators.minLength(8),
-            Validators.maxLength(20),
+            //Validators.maxLength(20),
             Validators.pattern(
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
             ),
@@ -191,6 +192,7 @@ export class AppRegisterPage implements OnInit {
     }
   }
   dateOfBirthValidator(): AsyncValidatorFn {
+    //can add 18 year
     return (control: AbstractControl): Promise<ValidationErrors | null> => {
       return new Promise((resolve) => {
         const selectedDate = new Date(control.value);
