@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { UserAuthenticationService } from '../services/userAuthentication.service';
 import { Router } from '@angular/router';
-import { UserList } from '../../shared/userList.model';
 
 @Component({
   selector: 'app-loginpage',
@@ -22,16 +21,18 @@ export class AppLoginPage implements OnInit {
     private userAuthenticationService: UserAuthenticationService
   ) {}
   loginForm: FormGroup = new FormGroup({
-    emailID: new FormControl(''),
+    userName: new FormControl(''),
     password: new FormControl(''),
   });
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: [
+      userName: [
         '',
         [
           Validators.required,
-          Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/),
+          Validators.pattern(
+            /^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z][a-zA-Z0-9@][a-zA-Z0-9]$/
+          ),
         ],
       ],
       password: ['', Validators.required],
@@ -39,7 +40,7 @@ export class AppLoginPage implements OnInit {
   }
   signIn() {
     const isValid = this.userAuthenticationService.ValidateUserCredentials(
-      this.loginForm.get(['email'])?.value,
+      this.loginForm.get(['userName'])?.value,
       this.loginForm.get(['password'])?.value
     );
     if (isValid) {

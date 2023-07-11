@@ -8,7 +8,6 @@ import {
   ValidationErrors,
   AsyncValidatorFn,
 } from '@angular/forms';
-//import { LoginUsersService } from '../login-users.service';
 import { Router } from '@angular/router';
 import { UserAuthenticationService } from '../services/userAuthentication.service';
 
@@ -55,46 +54,15 @@ export class AppRegisterPage implements OnInit {
       window.alert('User already exists!');
     } else {
       this.userAuthentication.AddNewUsers(data_temp);
+      //this.router.navigate(['/login']);
     }
   }
-  autoGenerateUSerName() {
-    //call the function of repeat code.
-    //first check username then @1/@2
-    const fname = this.registerForm.get(['firstName'])?.value;
-    const lname = this.registerForm.get(['lastName'])?.value;
-    if (lname != '') {
-      if (lname.length > 1) {
-        var username = '';
-        username += fname[0] + fname[1] + lname[0] + lname[1] + '@';
-        var i = 1;
-        while (true) {
-          username += i;
-          const isExists =
-            this.userAuthentication.checkUserNameExists(username);
-          if (!isExists) {
-            this.registerForm.controls['userName'].setValue(username);
-            break;
-          }
-          i += 1;
-        }
-      } else {
-        var username = '';
-        username += fname[0] + fname[1] + lname[0] + '@';
-        var i = 1;
-        while (true) {
-          username += i;
-          const isExists =
-            this.userAuthentication.checkUserNameExists(username);
-          if (!isExists) {
-            this.registerForm.controls['userName'].setValue(username);
-            break;
-          }
-          i += 1;
-        }
-      }
-    } else {
-      var username = '';
-      username += fname[0] + fname[1] + '@';
+  //call the function of repeat code.b
+  //first check username then @1/@2
+
+  setUserName(username: string) {
+    if (this.userAuthentication.checkUserNameExists(username)) {
+      username += '@';
       var i = 1;
       while (true) {
         username += i;
@@ -105,13 +73,31 @@ export class AppRegisterPage implements OnInit {
         }
         i += 1;
       }
+    } else {
+      this.registerForm.controls['userName'].setValue(username);
     }
   }
+  autoGenerateUSerName() {
+    const fname = this.registerForm.get(['firstName'])?.value;
+    const lname = this.registerForm.get(['lastName'])?.value;
+    var username = '';
+    if (lname != '') {
+      if (lname.length > 1) {
+        username += fname[0] + fname[1] + lname[0] + lname[1];
+      } else {
+        username += fname[0] + fname[1] + lname[0];
+      }
+    } else {
+      username += fname[0] + fname[1] + fname[2];
+    }
+    this.setUserName(username.toUpperCase());
+  }
+
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
       {
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
+        firstName: ['', [Validators.required, Validators.pattern(/[a-zA-Z]$/)]],
+        lastName: ['', Validators.pattern(/[a-zA-Z]$/)],
         userName: [
           '',
           [
@@ -121,7 +107,6 @@ export class AppRegisterPage implements OnInit {
             Validators.pattern(
               /^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z][a-zA-Z0-9@][a-zA-Z0-9]$/
             ),
-            Validators.pattern(/[a-zA-Z]/),
           ],
         ],
         email: [
@@ -134,18 +119,13 @@ export class AppRegisterPage implements OnInit {
         dateOfBirth: ['', [Validators.required], [this.dateOfBirthValidator()]],
         phoneNumber: [
           '',
-          [
-            Validators.required,
-            //Validators.maxLength(10),
-            Validators.pattern(/^[0-9]{10}$/),
-          ],
+          [Validators.required, Validators.pattern(/^[0-9]{10}$/)],
         ],
         password: [
           '',
           [
             Validators.required,
             Validators.minLength(8),
-            //Validators.maxLength(20),
             Validators.pattern(
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
             ),
@@ -156,7 +136,6 @@ export class AppRegisterPage implements OnInit {
           [
             Validators.required,
             Validators.minLength(8),
-            //Validators.maxLength(20),
             Validators.pattern(
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
             ),
@@ -185,7 +164,7 @@ export class AppRegisterPage implements OnInit {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
 
-    if (password !== confirmPassword) {
+    if (password != confirmPassword) {
       formGroup.get('confirmPassword')?.setErrors({ passwordMismatch: true });
     } else {
       formGroup.get('confirmPassword')?.setErrors(null);

@@ -17,30 +17,31 @@
           <hr />
           <div class="form-group">
             <div class="col-md-12">
-              <label for="email">Email:</label>
+              <label for="email">User name:</label>
               <input
-                type="email"
-                id="email"
-                formControlName="email"
+                type="userName"
+                id="userName"
+                formControlName="userName"
                 class="form-control"
-                placeholder="Email address"
+                oninput="this.value = this.value.toUpperCase()"
+                placeholder="User name"
               />
               <div
                 *ngIf="
-                  (loginForm.get('email')?.invalid &&
-                    loginForm.get('email')?.touched) ||
-                  loginForm.get('email')?.dirty
+                  (loginForm.get('userName')?.invalid &&
+                    loginForm.get('userName')?.touched) ||
+                  loginForm.get('userName')?.dirty
                 "
               >
                 <label
-                  *ngIf="loginForm.get('email')?.hasError('required')"
+                  *ngIf="loginForm.get('userName')?.hasError('required')"
                   class="text-danger"
-                  >Email address is required</label
+                  >USer name is required</label
                 >
                 <label
-                  *ngIf="loginForm.get('email')?.hasError('pattern')"
+                  *ngIf="loginForm.get('userName')?.hasError('pattern')"
                   class="text-danger"
-                  >Please provide a valid email address</label
+                  >Please provide a valid user name</label
                 >
               </div>
             </div>
@@ -70,6 +71,14 @@
               >
                 Login
               </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 d-flex justify-content-center">
+              <label>
+                Don't have an account?
+                <span><a [routerLink]="['/register']">Sign up</a></span>
+              </label>
             </div>
           </div>
         </div>

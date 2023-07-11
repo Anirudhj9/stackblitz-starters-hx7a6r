@@ -1,10 +1,10 @@
 .my-form {
   background-color: white;
   padding: 20px 20px 0% 20px;
-  margin-top: 1%;
+  margin-top: 0.7%;
   height: 50%;
   width: 50%;
-  font-size: 15px;
+  font-size: 14px;
 }
 .form-group {
   display: flex;
@@ -25,7 +25,7 @@
 }
 input,
 input::placeholder {
-  font: 14px sans-serif;
+  font: 12px sans-serif;
 }
 .invalid-input {
   border: 1px solid red;

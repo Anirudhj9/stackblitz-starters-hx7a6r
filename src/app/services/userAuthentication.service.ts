@@ -13,7 +13,7 @@ export class UserAuthenticationService {
     {
       emailID: 'user1@example.com',
       password: '@Password1',
-      userName: 'user@1',
+      userName: 'USER@1',
       firstName: 'user1',
       lastName: '',
       dateOfBirth: '',
@@ -22,7 +22,7 @@ export class UserAuthenticationService {
     {
       emailID: 'user2@example.com',
       password: '@Password2',
-      userName: 'user@2',
+      userName: 'USER@2',
       firstName: 'user2',
       lastName: '',
       dateOfBirth: '',
@@ -31,7 +31,7 @@ export class UserAuthenticationService {
     {
       emailID: 'user3@example.com',
       password: '@Password3',
-      userName: 'user@3',
+      userName: 'USER@3',
       firstName: 'user3',
       lastName: '',
       dateOfBirth: '',
@@ -40,7 +40,7 @@ export class UserAuthenticationService {
     {
       emailID: 'user4@example.com',
       password: '@Password4',
-      userName: 'user@4',
+      userName: 'USER@4',
       firstName: 'user4',
       lastName: '',
       dateOfBirth: '',
@@ -48,11 +48,11 @@ export class UserAuthenticationService {
     },
   ];
 
-  ValidateUserCredentials(email: string, password: string): Boolean {
+  ValidateUserCredentials(username: string, password: string): Boolean {
     for (var i = 0; i < this.UserDataList.length; i++) {
       if (
-        this.UserDataList[i].emailID === email &&
-        this.UserDataList[i].password === password
+        this.UserDataList[i].userName == username &&
+        this.UserDataList[i].password == password
       ) {
         return true;
       }
@@ -87,7 +87,7 @@ export class UserAuthenticationService {
 
   ValidateUserExists(emailID: string) {
     for (var i = 0; i < this.UserDataList.length; i++) {
-      if (this.UserDataList[i].emailID === emailID) {
+      if (this.UserDataList[i].emailID == emailID) {
         return true;
       }
     }
