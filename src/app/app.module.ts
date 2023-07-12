@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
+import { AgGridModule } from 'ag-grid-angular/main';
 
 import { AppHomePage } from './homepage/homepage.component';
 import { AppComponent } from './app.component';
@@ -28,8 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatGridListModule,
-    MatCardModule,
+    AgGridModule.withComponents([]),
   ],
   providers: [AppComponent],
   bootstrap: [AppComponent],
