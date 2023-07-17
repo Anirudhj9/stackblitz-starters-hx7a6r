@@ -3,12 +3,13 @@
 
 import { Injectable } from '@angular/core';
 import { UserList } from '../../shared/userList.model';
+import { UserAuth } from './userAuth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserAuthenticationService {
-  constructor() {}
+  constructor(private userAuth: UserAuth) {}
   private UserDataList: UserList[] = [
     {
       emailID: 'user1@example.com',
@@ -48,22 +49,25 @@ export class UserAuthenticationService {
     },
   ];
 
+  //signin
   ValidateUserCredentials(username: string, password: string): Boolean {
     for (var i = 0; i < this.UserDataList.length; i++) {
       if (
         this.UserDataList[i].userName == username &&
         this.UserDataList[i].password == password
       ) {
+        this.userAuth.setAuthentication();
         return true;
       }
     }
+    this.userAuth.unsetAuthentication();
     return false;
   }
 
   getUsers() {
     return this.UserDataList;
   }
-
+  //signup
   AddNewUsers(data: UserList) {
     const emailID = data.emailID;
     const password = data.password;
@@ -84,7 +88,7 @@ export class UserAuthenticationService {
     console.log(this.UserDataList);
     window.alert('New User added successfully');
   }
-
+  //signup
   ValidateUserExists(emailID: string) {
     for (var i = 0; i < this.UserDataList.length; i++) {
       if (this.UserDataList[i].emailID == emailID) {
@@ -93,7 +97,7 @@ export class UserAuthenticationService {
     }
     return false;
   }
-
+  //signup
   checkUserNameExists(username: string) {
     for (var i = 0; i < this.UserDataList.length; i++) {
       if (this.UserDataList[i].userName == username) {
