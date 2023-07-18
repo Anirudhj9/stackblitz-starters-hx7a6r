@@ -1,0 +1,29 @@
+.sideContent {
+  border-right: 1px solid black;
+}
+
+.navbar-tag {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar-tag:hover {
+  text-decoration: none;
+  color: black;
+}
+
+ul,
+li {
+  padding: 0;
+  border-style: none;
+}
+.sideContent:hover {
+  background-color: white;
+  cursor: pointer;
+}
+.sideContent {
+  padding: 10px 10px 10px 10px;
+  color: #000;
+  display: block;
+  zoom: 1;
+}

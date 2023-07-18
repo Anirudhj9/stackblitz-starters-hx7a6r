@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', canActivate: [AuthGuard], component: AppHomePage },
   { path: 'login', component: AppLoginPage },
   { path: 'register', component: AppRegisterPage },
-  { path: 'about', canActivate: [AuthGuard], component: AppAboutPage },
+  { path: 'about', component: AppAboutPage },
 ];
 export const routerProviders = [provideRouter(routes)];
 
