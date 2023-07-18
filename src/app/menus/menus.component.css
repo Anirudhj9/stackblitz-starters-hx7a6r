@@ -1,10 +1,7 @@
-.sideContent {
-  border-right: 1px solid black;
-}
-
 .navbar-tag {
   text-decoration: none;
   color: black;
+  font-size: 13px;
 }
 
 .navbar-tag:hover {
@@ -16,14 +13,17 @@ ul,
 li {
   padding: 0;
   border-style: none;
+  text-align: center;
 }
 .sideContent:hover {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.546);
   cursor: pointer;
 }
 .sideContent {
   padding: 10px 10px 10px 10px;
   color: #000;
   display: block;
+  border-right: 0.1em solid black;
   zoom: 1;
+  border-bottom: 1px solid black;
 }
