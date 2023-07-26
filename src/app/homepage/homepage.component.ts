@@ -9,41 +9,7 @@ import { GridOptions } from 'ag-grid';
 })
 export class AppHomePage {
   public users: any[] = [];
-  gridOptions: GridOptions;
   constructor(private userAuthentication: UserAuthenticationService) {
     this.users = this.userAuthentication.getUsers();
-    this.gridOptions = <GridOptions>{
-      enableSorting: true,
-      // enable filtering
-      enableFilter: true,
-    };
-    this.gridOptions.columnDefs = [
-      {
-        headerName: 'First Name',
-        field: 'firstName',
-        width: 100,
-      },
-      {
-        headerName: 'Last Name',
-        field: 'lastName',
-        width: 100,
-      },
-      {
-        headerName: 'Email ID',
-        field: 'emailID',
-        width: 100,
-      },
-      {
-        headerName: 'Date Of Birth',
-        field: 'dateOfBirth',
-        width: 100,
-      },
-      {
-        headerName: 'Phone Number',
-        field: 'phoneNumber',
-        width: 100,
-      },
-    ];
-    this.gridOptions.rowData = this.users;
   }
 }

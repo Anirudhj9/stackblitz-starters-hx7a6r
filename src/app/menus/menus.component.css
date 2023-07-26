@@ -3,12 +3,10 @@
   color: black;
   font-size: 13px;
 }
-
 .navbar-tag:hover {
   text-decoration: none;
   color: black;
 }
-
 ul,
 li {
   padding: 0;

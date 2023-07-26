@@ -14,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserAuth } from './services/userAuth.service';
 import { UserAuthenticationService } from './services/userAuthentication.service';
 import { AuthGuard } from './services/Auth-Gaurd.service';
-import { MenuComponentCodule } from './menus/menus.component';
+import { MenuComponentModule } from './menus/menus.component';
 import { AppFooterModule } from './footer/footer.component';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { AppFooterModule } from './footer/footer.component';
     AppLoginPage,
     AppRegisterPage,
     AppAboutPage,
-    MenuComponentCodule,
+    MenuComponentModule,
     AppFooterModule,
   ],
   imports: [
