@@ -334,16 +334,3 @@ The user name must be of minimum 3 characters, must contain atleast 1 letter, ca
     </div>
   </div>
 </div>
-
-<div class="col-md-6">
-  <label for="dateOfBirth">Date of Birth:</label>
-  <mat-form-field>
-    <mat-label>Choose a date</mat-label>
-    <!-- #docregion toggle -->
-    <input matInput [matDatepicker]="picker" />
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-    <!-- #enddocregion toggle -->
-  </mat-form-field>
-</div>
