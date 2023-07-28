@@ -8,11 +8,12 @@ import { provideRouter, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './services/Auth-Gaurd.service';
 
 const routes: Routes = [
-  { path: 'home', canActivate: [AuthGuard], component: AppHomePage },
+  { path: 'home', component: AppHomePage },
   { path: 'login', component: AppLoginPage },
   { path: 'register', component: AppRegisterPage },
   { path: 'about', component: AppAboutPage },
 ];
+//canActivate: [AuthGuard],
 export const routerProviders = [provideRouter(routes)];
 
 @NgModule({

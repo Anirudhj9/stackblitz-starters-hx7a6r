@@ -9,6 +9,8 @@ import { GridOptions } from 'ag-grid';
 })
 export class AppHomePage {
   public users: any[] = [];
+  displayedColumns = ['firstName', 'lastName', 'phoneNumber', 'dateOfBirth'];
+
   constructor(private userAuthentication: UserAuthenticationService) {
     this.users = this.userAuthentication.getUsers();
   }
