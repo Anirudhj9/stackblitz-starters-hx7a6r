@@ -17,6 +17,7 @@ import { UserAuthenticationService } from './services/userAuthentication.service
 import { AuthGuard } from './services/Auth-Gaurd.service';
 import { MenuComponentModule } from './menus/menus.component';
 import { AppFooterModule } from './footer/footer.component';
+import { OMMEmployee } from './OMM/employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AppFooterModule } from './footer/footer.component';
     AppAboutPage,
     MenuComponentModule,
     AppFooterModule,
+    OMMEmployee,
   ],
   imports: [
     BrowserModule,
