@@ -1,1 +1,39 @@
-<p>this is employee page</p>
+<form [formGroup]="employeeForm" (ngSubmit)="submit()" class="my-form">
+  <div class="col-md-12 main-container">
+    <!-- CC -->
+    <div class="col-md-12 cc-container">
+      <label class="countryCode">CC: </label>
+      <div class="col-md-5">
+        <select class="cc_select">
+          <option
+            *ngFor="let opt of options"
+            [value]="opt.option"
+            [selected]="opt.selected == 'true'"
+          >
+            {{ opt.option }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <hr style="margin-left: 2%;" />
+
+    <!-- Employee container -->
+    <div class="col-md-12 employee-container">
+      <div class="col-md-5">
+        <div class="form-group">
+          <div class="col-md-12" style="display: flex;">
+            <label class="emaployeeName">Employee Name:</label>
+            <input
+              type="text"
+              id="employeeName"
+              formControlName="employeeName"
+              class="form-control"
+              placeholder="Employee name"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

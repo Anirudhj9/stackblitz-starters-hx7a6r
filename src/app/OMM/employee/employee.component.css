@@ -1,3 +1,21 @@
-p {
-  font-size: larger;
+.cc_select {
+  width: 12%;
+}
+.main-container {
+  font-size: 14px;
+  padding: 1% 0% 0% 0%;
+}
+.cc-container {
+  display: flex;
+}
+select {
+  background-color: #bfb9b969;
+}
+input,
+input::placeholder {
+  font: 14px sans-serif;
+}
+.emaployeeName {
+  width: 45%;
+  padding: 1% 0%;
 }

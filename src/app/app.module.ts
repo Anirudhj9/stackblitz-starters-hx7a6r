@@ -18,6 +18,7 @@ import { AuthGuard } from './services/Auth-Gaurd.service';
 import { MenuComponentModule } from './menus/menus.component';
 import { AppFooterModule } from './footer/footer.component';
 import { OMMEmployee } from './OMM/employee/employee.component';
+import { CountryCode } from './services/countryCodeLists.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,13 @@ import { OMMEmployee } from './OMM/employee/employee.component';
     MatTableModule,
     AgGridModule.withComponents([]),
   ],
-  providers: [AppComponent, AuthGuard, UserAuth, UserAuthenticationService],
+  providers: [
+    AppComponent,
+    AuthGuard,
+    UserAuth,
+    UserAuthenticationService,
+    CountryCode,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
