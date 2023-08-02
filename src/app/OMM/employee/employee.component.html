@@ -13,6 +13,7 @@
             *ngFor="let opt of countryCodeList"
             [value]="opt.option"
             [selected]="opt.selected == 'true'"
+            (onChange)="countryCodeChange(opt.option)"
           >
             {{ opt.option }}
           </option>
@@ -126,7 +127,7 @@
         <div class="col-md-7">
           <select class="cc_select1">
             <option
-              *ngFor="let opt of options"
+              *ngFor="let opt of queue"
               [value]="opt.option"
               [selected]="opt.selected == 'true'"
             >

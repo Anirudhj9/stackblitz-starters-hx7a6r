@@ -15,6 +15,7 @@ export class OMMEmployee {
   public countryCodeList: any[] = [];
   public employeeRoleList: any[] = [];
   public yesOrNoList: any[] = [];
+  public queue: any[] = [];
   public employeeName: string = '';
 
   employeeForm: FormGroup = new FormGroup({
@@ -27,6 +28,7 @@ export class OMMEmployee {
     this.countryCodeList = this.employeePageServices.getCountryCodeList();
     this.employeeRoleList = this.employeePageServices.getEmployeeRoleList();
     this.yesOrNoList = this.employeePageServices.getYesorNoList();
+    this.queue = this.employeePageServices.getIntitalQueueList();
   }
   ngOnInit(): void {
     this.employeeForm = this.formBuilder.group({
