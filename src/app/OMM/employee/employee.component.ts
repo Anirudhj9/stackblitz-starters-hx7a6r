@@ -5,21 +5,28 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { CountryCode } from '../../services/countryCodeLists.service';
+import { EmployeePageServices } from '../../services/EmployeePage.service';
 @Component({
   templateUrl: 'employee.component.html',
   selector: 'app-omm_employee',
   styleUrls: ['employee.component.css'],
 })
 export class OMMEmployee {
-  public options: any[] = [];
+  public countryCodeList: any[] = [];
+  public employeeRoleList: any[] = [];
+  public yesOrNoList: any[] = [];
   public employeeName: string = '';
 
   employeeForm: FormGroup = new FormGroup({
     employeeName: new FormControl(''),
   });
-  constructor(private CC: CountryCode, private formBuilder: FormBuilder) {
-    this.options = this.CC.getCountryCodeList();
+  constructor(
+    private employeePageServices: EmployeePageServices,
+    private formBuilder: FormBuilder
+  ) {
+    this.countryCodeList = this.employeePageServices.getCountryCodeList();
+    this.employeeRoleList = this.employeePageServices.getEmployeeRoleList();
+    this.yesOrNoList = this.employeePageServices.getYesorNoList();
   }
   ngOnInit(): void {
     this.employeeForm = this.formBuilder.group({
