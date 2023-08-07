@@ -1,5 +1,5 @@
 .cc_select {
-  width: 12%;
+  width: auto;
 }
 .main-container {
   font-size: 14px;
@@ -20,5 +20,8 @@ input::placeholder {
   padding: 1% 0%;
 }
 .header-content {
+  display: flex;
+}
+.rowContent {
   display: flex;
 }
