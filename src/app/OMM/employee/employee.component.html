@@ -5,38 +5,39 @@
 >
   <div class="col-md-12 main-container">
     <!-- CC -->
-    <div class="col-md-12 cc-container">
-      <label class="countryCode">CC: </label>
-      <div class="col-md-5">
-        <select class="cc_select">
-          <option
-            *ngFor="let opt of countryCodeList"
-            [value]="opt.option"
-            [selected]="opt.selected == 'true'"
-            (onChange)="countryCodeChange(opt.option)"
-          >
-            {{ opt.option }}
-          </option>
-        </select>
+    <div class="row header-content">
+      <div class="col-md-12 cc-container">
+        <label class="countryCode">CC: </label>
+        <div class="col-md-5">
+          <select class="cc_select">
+            <option
+              *ngFor="let opt of countryCodeList"
+              [value]="opt.option"
+              [selected]="opt.selected == 'true'"
+              (onChange)="countryCodeChange(opt.option)"
+            >
+              {{ opt.option }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4 rowContent">
+        <div class="col-md-3" style="text-align: right; padding: 0%">
+          <label class="labeled emaployeeRole">Queue:</label>
+        </div>
+        <div class="col-md-7">
+          <select class="cc_select1">
+            <option
+              *ngFor="let opt of queue"
+              [value]="opt.option"
+              [selected]="opt.selected == 'true'"
+            >
+              {{ opt.option }}
+            </option>
+          </select>
+        </div>
       </div>
     </div>
-    <div class="col-md-4 rowContent">
-      <div class="col-md-3" style="text-align: right; padding: 0%">
-        <label class="labeled emaployeeRole">Queue:</label>
-      </div>
-      <div class="col-md-7">
-        <select class="cc_select1">
-          <option
-            *ngFor="let opt of queue"
-            [value]="opt.option"
-            [selected]="opt.selected == 'true'"
-          >
-            {{ opt.option }}
-          </option>
-        </select>
-      </div>
-    </div>
-
     <hr style="margin-left: 2%;" />
 
     <!-- Employee container style="display: flex"-->
