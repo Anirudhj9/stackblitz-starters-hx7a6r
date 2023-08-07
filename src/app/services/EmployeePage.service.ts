@@ -1,5 +1,5 @@
 export class EmployeePageServices {
-  priate intitalQueue = [];
+  private intitalQueue = [];
   private CountryCodeList = [
     {
       option: 'AT',
@@ -65,7 +65,7 @@ export class EmployeePageServices {
   getYesorNoList() {
     return this.YesOrNo;
   }
-  getIntitalQueueList(){
-    return this.
+  getIntitalQueueList() {
+    return this.intitalQueue;
   }
 }
